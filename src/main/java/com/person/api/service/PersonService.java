@@ -13,6 +13,8 @@ import com.person.api.exception.PersonNotFoundException;
 import com.person.api.mapper.PersonMapper;
 import com.person.api.repository.PersonRepository;
 
+import lombok.AllArgsConstructor;
+
 /***
  * 
  * @author dionatan
@@ -20,16 +22,12 @@ import com.person.api.repository.PersonRepository;
  */
 
 @Service
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class PersonService {
 
 	private PersonRepository personRepository;
 
 	private final PersonMapper personMapper = PersonMapper.INSTANCE;
-
-	@Autowired
-	public PersonService(PersonRepository personRepository) {
-		this.personRepository = personRepository;
-	}
 
 	public MessageResponseDTO createPerson(PersonDTO personDTO) {
 		Person personToSave = personMapper.toModel(personDTO);

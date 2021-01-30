@@ -21,6 +21,8 @@ import com.person.api.dto.response.MessageResponseDTO;
 import com.person.api.exception.PersonNotFoundException;
 import com.person.api.service.PersonService;
 
+import lombok.AllArgsConstructor;
+
 /***
  * 
  * @author dionatan
@@ -29,14 +31,10 @@ import com.person.api.service.PersonService;
 
 @RestController
 @RequestMapping("/people")
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class PersonController {
 
 	private PersonService personService;
-
-	@Autowired
-	public PersonController(PersonService personService) {
-		this.personService = personService;
-	}
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
